@@ -1978,7 +1978,7 @@ func (mw *MagickWand) PingImageBlob(blob []byte) error {
 func (mw *MagickWand) PingImageFile(img *os.File) error {
 	cmode := C.CString("w+")
 	defer C.free(unsafe.Pointer(cmode))
-	file := C.fdopen(C.int(img.Fd()), cmode)
+	file := C._fdopen(C.int(img.Fd()), cmode)
 	defer C.fclose(file)
 	C.MagickPingImageFile(mw.mw, file)
 	return mw.GetLastError()
@@ -2168,7 +2168,7 @@ func (mw *MagickWand) ReadImageBlob(blob []byte) error {
 func (mw *MagickWand) ReadImageFile(img *os.File) error {
 	cmode := C.CString("w+")
 	defer C.free(unsafe.Pointer(cmode))
-	file := C.fdopen(C.int(img.Fd()), cmode)
+	file := C._fdopen(C.int(img.Fd()), cmode)
 	defer C.fclose(file)
 	C.MagickReadImageFile(mw.mw, file)
 	return mw.GetLastError()
@@ -3101,7 +3101,7 @@ func (mw *MagickWand) WriteImage(filename string) error {
 func (mw *MagickWand) WriteImageFile(out *os.File) error {
 	cmode := C.CString("w+")
 	defer C.free(unsafe.Pointer(cmode))
-	file := C.fdopen(C.int(out.Fd()), cmode)
+	file := C._fdopen(C.int(out.Fd()), cmode)
 	defer C.fclose(file)
 	C.MagickWriteImageFile(mw.mw, file)
 	return mw.GetLastError()
@@ -3119,7 +3119,7 @@ func (mw *MagickWand) WriteImages(filename string, adjoin bool) error {
 func (mw *MagickWand) WriteImagesFile(out *os.File) error {
 	cmode := C.CString("w+")
 	defer C.free(unsafe.Pointer(cmode))
-	file := C.fdopen(C.int(out.Fd()), cmode)
+	file := C._fdopen(C.int(out.Fd()), cmode)
 	defer C.fclose(file)
 	C.MagickWriteImagesFile(mw.mw, file)
 	return mw.GetLastError()

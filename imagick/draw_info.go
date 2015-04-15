@@ -5,6 +5,8 @@
 package imagick
 
 /*
+#define MAGICKCORE_SIZEOF_DOUBLE_T 12
+#define MAGICKCORE_SIZEOF_DOUBLE 12
 #include <wand/MagickWand.h>
 */
 import "C"
